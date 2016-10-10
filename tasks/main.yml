@@ -1,0 +1,15 @@
+---
+# tasks file for ansible-hosts
+- name: Set hostname
+  hostname:
+    name: "{{ inventory_hostname }}"
+  when: not inventory_hostname | ipaddr
+
+- name: Add inventory hosts to /etc/hosts
+  lineinfile:
+    dest: /etc/hosts
+    regexp: ".*{{ item }}$"
+    line: "{{ hostvars[item].ansible_host }} {{ item }}"
+    state: present
+  when: hostvars[item].ansible_host is defined
+  with_items: "{{ groups['all'] }}"

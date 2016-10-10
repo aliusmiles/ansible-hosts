@@ -1,0 +1,2 @@
+test-vm-01 ansible_host=192.168.13.11 ansible_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/vm1/virtualbox/private_key
+test-vm-02 ansible_host=192.168.13.12 ansible_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/vm2/virtualbox/private_key
